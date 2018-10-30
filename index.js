@@ -10,8 +10,7 @@ bot.login(process.env.TOKEN)
 bot.on("message", (message) => {
 if(message.content === "~help") {
 console.log("Log")
-message.channel.send(`${message.author.username}` + ", I Have Sent You The Commands 📪")
-message.author.send("Powered By ``Discord``")
+message.channel.send(`${message.author.username}` + ", I Have Sent You The Commands ðŸ“ª")
+message.author.send("Please specify a module that you would like to look up: \n\n Powered By ``Discord``")
 }
 });
- 
