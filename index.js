@@ -8,17 +8,11 @@ bot.user.setActivity("Discord Community", {type: "STREAMING"})
 bot.login(process.env.TOKEN)
 
 bot.on("message", (message) => {
-if(message.content === "~ip") {
-message.channel.send("twinfactions.tk : 19132")
+if(message.content === "~twitter") {
+message.channel.send("Twitter.com/ModdingTwinz")
 }
 });
 
-bot.on("message", (message) => {
-if(message.content === "~youtube") {
-message.channel.send("YouTube.com/c/ModdingTwinz")
- }
- });
- 
 bot.on("message", (message) => {
 if(message.content === "~discord") {
 message.channel.send("https://discord.gg/u3vqvst")
