@@ -9,7 +9,7 @@ bot.login(process.env.TOKEN)
  
 bot.on("message", (message) => {
 if(message.content === "kick") { 
-if(!message.member.roles.some(r=>["FOUNDER", "APP/GAME DEVELOPER", "ADMINISTRATOR", "MODERATOR"].includes(r.name)) ) if(message.member.id !== config.ownerID) return message.channel.send("🚫 Only Staff Members can kick other Users!") 
+if(!message.member.roles.some(r=>["EXECUTIVE", "DISCORD MODERATOR", " DICORD ADMINISTRATOR", "DISCORD HELPER"].includes(r.name)) ) if(message.member.id !== config.ownerID) return message.channel.send("🚫 Only Staff Members can kick other Users!") 
 let toKick = message.mentions.members.first() ||message.guild.members.get(args[0]); 
 if(!toKick) return message.channel.send("🚫 Invalid User"); if(!toKick.kickable) return message.channel.send("🚫 Couldn't kick " + `${toKick.user.tag}`); 
 if(toKick.id === config.ownerID) return message.channel.send("🚫 The Bot Developer can't be kicked"); 
