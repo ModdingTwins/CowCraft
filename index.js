@@ -6,18 +6,6 @@ console.log(`${bot.user.username}` + "is online")
 bot.user.setActivity("Discord Community", {type: "STREAMING"})
 });
 bot.login(process.env.TOKEN)
-
-bot.on("message", (message) => {
-if(message.content === "~twitter") {
-message.channel.send("Twitter.com/ModdingTwinz")
-}
-});
-
-bot.on("message", (message) => {
-if(message.content === "~discord") {
-message.channel.send("https://discord.gg/u3vqvst")
-}
-});
  
 bot.on("message", (message) => {
 if(message.content === "-help") {
