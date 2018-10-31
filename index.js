@@ -21,8 +21,7 @@ const kickEmbed = new Discord.RichEmbed()
 .addField("Kicked User", toKick.user.tag) 
 .addField("Kicked by", message.author.tag) 
 .addField("Reason", reason)
-
- message.channel.send(kickEmbed);
+message.channel.send(kickEmbed);
 }
 });
  
