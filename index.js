@@ -3,7 +3,7 @@ const bot = new Discord.Client()
 bot.on("ready", () => {
 console.log(`${bot.user.username}` + "is online")
 
-bot.user.setActivity("TwinFactions.tk | ~help", {type: "STREAMING"})
+bot.user.setActivity("Discord Community", {type: "STREAMING"})
 });
 bot.login(process.env.TOKEN)
 
