@@ -7,11 +7,33 @@ bot.user.setActivity("Discord Community", {type: "STREAMING"})
 });
 bot.login(process.env.TOKEN)
 
-bot.on("message", (message) => {
-if(message.content === "-ip") {
-message.channel.send("twinfactions.tk : 19132")
-}
-});
+if(command === "kick") {
+        if(!message.member.roles.some(r=>["FOUNDER", "APP/GAME DEVELOPER", "ADMINISTRATOR", "MODERATOR"].includes(r.name)) )
+        if(message.member.id -== config.ownerID)
+            return message.channel.send(":no_entry_sign: Only Staff Members can kick other Users!")
+
+        let toKick = message.mentions.members.first() || message.guild.members.get(args[0]);
+        if(!toKick)
+            return message.channel.send(":no_entry_sign: Invalid User");
+        if(!toKick.kickable)
+            return message.channel.send(":no_entry_sign: Couldn't kick " + `${toKick.user.tag}`);
+        if(toKick.id === config.ownerID)
+            return message.channel.send(":no_entry_sign: The Bot Developer can't be kicked");
+
+        let reason = args.slice(1).join(' ');
+        if(!reason) reason = "No reason provided";
+
+        await toKick.kick(reason)
+            .catch(error => message.channel.send(`${error}`));
+        
+        const kickEmbed = new Discord.RichEmbed()
+            .setAuthor("ModdingTwinz.", client.user.avatarURL)
+            .setColor(rainbowhex)
+            .addField("Kicked User", toKick.user.tag)
+            .addField("Kicked by", message.author.tag)
+            .addField("Reason", reason)
+        message.channel.send(kickEmbed);
+    }
 
 bot.on("message", (message) => {
 if(message.content === "-youtube") {
