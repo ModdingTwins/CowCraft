@@ -1,16 +1,30 @@
-const Discord = require("discord.js")
-const bot = new Discord.Client()
-bot.on("ready", () => {
-console.log(`${bot.user.username}` + "is online")
+/**
+ * A bot that welcomes new guild members when they join
+ */
 
-bot.user.setActivity("Discord Community", {type: "STREAMING"})
+// Import the discord.js module
+const Discord = require('discord.js');
+
+// Create an instance of a Discord client
+const client = new Discord.Client();
+
+/**
+ * The ready event is vital, it means that only _after_ this will your bot start reacting to information
+ * received from Discord
+ */
+client.on('ready', () => {
+  console.log('I am ready!');
 });
-bot.login(process.env.TOKEN)
- 
-bot.on("message", (message) => {
-if(message.content === "-help") {
-console.log("Log")
-message.channel.send(`${message.author.username}` + ", I Have Sent You The Commands 📭")
-message.author.send("Please specify a module that you would like to look up:\n\n Powered By ``ModdingTwinz#4560``")
-}
+
+// Create an event listener for new guild members
+client.on('guildMemberAdd', member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find(ch => ch.name === 'member-log');
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(`Welcome to the server, ${member}`);
 });
+
+// Log our bot in using the token from https://discordapp.com/developers/applications/me
+client.login('your token here');
