@@ -1,41 +1,34 @@
-const Discord = require("discord.js");
-const fs = require("fs");
-const bot = new Discord.Client({disableEveryone: true});
-bot.commands = new Discord.Collection();
+const Discord = require("discord.js")
+const bot = new Discord.Client()
+bot.on("ready", () => {
+console.log(`${bot.user.username}` + "is online")
 
-fs.readdir("./commands/", (err, files) => {
-
-  if(err) console.log(err);
-  let jsfile = files.filter(f => f.split(".").pop() === "js")
-  if(jsfile.length <= 0){
-    console.log("Couldn't find commands.");
-    return;
-  }
-
-  jsfile.forEach((f, i) =>{
-    let props = require(`./commands/${f}`);
-    console.log(`${f} loaded!`);
-    bot.commands.set(props.help.name, props);
-  });
+bot.user.setActivity("TwinFactions.tk | ~help", {type: "STREAMING"})
 });
 
-bot.on("ready", async () => {
-  console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
-  bot.user.setActivity(`Under Development`, {type: "STREAMING"});
-
+bot.on("message", (message) => {
+if(message.content === "~ip") {
+message.channel.send("twinfactions.tk : 19132")
+}
 });
 
-bot.on("message", async message => {
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
-
-  let prefix = process.env.PREFIX;
-  let messageArray = message.content.split(" ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
-  let commandfile = bot.commands.get(cmd.slice(prefix.length));
-  if(commandfile) commandfile.run(bot,message,args);
-
+bot.on("message", (message) => {
+if(message.content === "~youtube") {
+message.channel.send("YouTube.com/c/ModdingTwinz")
+ }
+ });
+ 
+bot.on("message", (message) => {
+if(message.content === "~discord") {
+message.channel.send("https://discord.gg/u3vqvst")
+}
 });
-
-bot.login(process.env.TOKEN);
+ 
+bot.on("message", (message) => {
+if(message.content === "~help") {
+console.log("Log")
+message.channel.send(`${message.author.username}` + ", I Have Sent You The Commands 📪")
+message.author.send("Please specify a module that you would like to look up:\n 1. ~ip ``TwinFactions Server Ip & Port``\n 2. ~youtube ``Subscribe To ModdingTwinz Channel``\n 3. ~discord ``Join us on TwinFactions & Have Fun!``\n\n Powered By ``ModdingTwinz#4560``")
+}
+});
+bot.login(process.env.TOKEN)
