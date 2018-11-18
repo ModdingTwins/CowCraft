@@ -1,6 +1,6 @@
 {
-"name": "Botiso",
-"description": "Heroku Bot",
+"name": "CowCraft",
+"description": "CowCraft Bot",
 "version": "1.0.0",
 "main": "bot.js",
 "scripts": {
