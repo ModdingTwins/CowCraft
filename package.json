@@ -1,14 +1,12 @@
 {
   "name": "TwinFactions",
-  "version": "1.0.0",
   "description": "Heroku Bot",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "ModdingTwinz",
-  "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.4.2",
+    "discord.js": "11.4.2",
     "request": "2.81.0",
-  }
+}
